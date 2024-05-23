@@ -67,7 +67,7 @@
 <body>
     <main>
         <div id="inf" align="center">
-          &&
+         ------
         </div>
         <h1>Modals</h1>
         <button onclick="getCS();"> Alert CS </button>
@@ -101,7 +101,7 @@ function at(val){tinyxhr("",function (err,data,xhr){ if (err) alert("goterr "+er
             }
 
 
-        getCS(){
+       function  getCS(){
 
  webApp.CloudStorage.getItem('Test', (err, data) => {
             if (err) {
@@ -117,7 +117,7 @@ function at(val){tinyxhr("",function (err,data,xhr){ if (err) alert("goterr "+er
         )
             
         }
-        setTimeout(Telegram.WebApp.expand(),1000);
+        setTimeout(window.Telegram.WebApp.expand(),1000);
    const initParams = window.Telegram.WebView.initParams;
     const themeParams = JSON.parse(initParams.tgWebAppThemeParams);
     console.log(themeParams);
