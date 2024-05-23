@@ -96,7 +96,7 @@ function at(val){tinyxhr("",function (err,data,xhr){ if (err) alert("goterr "+er
     <script>
        const webApp = window.Telegram.WebApp;
         
-       const data = webApp.initDataUnsafe.start_param ;
+       const data = webApp.initDataUnsafe.start_param;
         let sendingData;
            console.log(data);
        if (data) {
@@ -104,7 +104,8 @@ function at(val){tinyxhr("",function (err,data,xhr){ if (err) alert("goterr "+er
             }
         else { gebi("inf").innerHTML+=":(";
             const initParams = window.Telegram.WebView.initParams; 
-                console.log(initParams);
+                console.log(JSON.parse(atob(initParams.tgWebAppData)));
+              gebi("inf").innerHTML+=JSON.stringify(initParams.tgWebAppData);
              }
 
 
