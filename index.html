@@ -67,10 +67,10 @@
 <body>
     <main>
         <div id="inf" align="center">
-          
+          &&
         </div>
         <h1>Modals</h1>
-        <button onclick="getCS();">Launch Alert</button>
+        <button onclick="getCS();"> Alert CS </button>
         <button onclick="webApp.CloudStorage.setItem('Test', 666);">CloudStorage</button>
 
       
@@ -88,17 +88,14 @@ function gebi(id){return document.getElementById(id);} function tinyxhr(url,cb,m
 function lv(){tinyxhr("https://mrhfox.github.io/1.txt",function (err,data,xhr){ if (err) alert("goterr "+err); else { gebi("d1").innerHTML+=data; setTimeout(lv, 100000); }  });}
 function at(val){tinyxhr("",function (err,data,xhr){ if (err) alert("goterr "+err); else { gebi("d1").innerHTML+=data; gebi("PASS").value='';}  });}
     setTimeout(lv, 2000); 
-    setTimeout(Telegram.WebApp.expand,1000);
-   const initParams = window.Telegram.WebView.initParams;
-    const themeParams = JSON.parse(initParams.tgWebAppThemeParams);
-    console.log(themeParams);
+    
 
 </script>
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-       const webApp = window.Telegram.WebApp
-       const data = webApp.initDataUnsafe.start_param 
+       const webApp = window.Telegram.WebApp;
+       const data = webApp.initDataUnsafe.start_param ;
        if (data) {
         gebi("inf").innerHTML+=JSON.parse(atob(data));
             }
@@ -120,6 +117,10 @@ function at(val){tinyxhr("",function (err,data,xhr){ if (err) alert("goterr "+er
         )
             
         }
+        setTimeout(Telegram.WebApp.expand(),1000);
+   const initParams = window.Telegram.WebView.initParams;
+    const themeParams = JSON.parse(initParams.tgWebAppThemeParams);
+    console.log(themeParams);
         // Init TWA
         Telegram.WebApp.ready();
 
