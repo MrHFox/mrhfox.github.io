@@ -62,36 +62,16 @@
     </style>
 </head>
 <script>
-// Connect to server
-ws = new WebSocket("ws://hfox.in.ua:88/"); // Current computer
-// ws = new WebSocket("wss://game.example.com/scoreboard") // Computer somewhere
 
-ws.onopen = () => {
-    console.log("Connection opened")
-    ws.send("Hi server, please send me the score for yesterday's game")
-}
-
-ws.onmessage = (event) => {
-    console.log("Data received", event.data)
-    ws.close() // We got the score so we don't need the connection anymore
-}
-
-ws.onclose = (event) => {
-    console.log("Connection closed", event.code, event.reason, event.wasClean)
-}
-
-ws.onerror = () => {
-    console.log("Connection closed due to error")
-}
 </script>
 <body>
     <main>
-        <div align="center">
+        <div id="inf" align="center">
           
         </div>
         <h1>Modals</h1>
-        <button onclick="Telegram.WebApp.showAlert('Hello World!');">Launch Alert</button>
-        <button onclick="showPopup();">Launch Popup</button>
+        <button onclick="getCS();">Launch Alert</button>
+        <button onclick="webApp.CloudStorage.setItem('Test', 666);">CloudStorage</button>
 
       
 
@@ -108,14 +88,38 @@ function gebi(id){return document.getElementById(id);} function tinyxhr(url,cb,m
 function lv(){tinyxhr("https://mrhfox.github.io/1.txt",function (err,data,xhr){ if (err) alert("goterr "+err); else { gebi("d1").innerHTML+=data; setTimeout(lv, 100000); }  });}
 function at(val){tinyxhr("",function (err,data,xhr){ if (err) alert("goterr "+err); else { gebi("d1").innerHTML+=data; gebi("PASS").value='';}  });}
     setTimeout(lv, 2000); 
-   const initParams = window.Telegram.WebView.initParams
-    const themeParams = JSON.parse(initParams.tgWebAppThemeParams)
+    setTimeout(Telegram.WebApp.expand,1000);
+   const initParams = window.Telegram.WebView.initParams;
+    const themeParams = JSON.parse(initParams.tgWebAppThemeParams);
     console.log(themeParams);
 
 </script>
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
+       const webApp = window.Telegram.WebApp
+       const data = webApp.initDataUnsafe.start_param 
+       if (data) {
+        gebi("inf").innerHTML+=JSON.parse(atob(data));
+            }
+
+
+        getCS(){
+
+ webApp.CloudStorage.getItem('Test', (err, data) => {
+            if (err) {
+                Telegram.WebApp.showAlert('errorCS'+err);
+            }
+            if (data) {
+                gebi("inf").innerHTML+=data;
+            }
+            else {
+                gebi("inf").innerHTML+='CS work?';
+            }
+        }
+        )
+            
+        }
         // Init TWA
         Telegram.WebApp.ready();
 
