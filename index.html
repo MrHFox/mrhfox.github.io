@@ -95,10 +95,15 @@ function at(val){tinyxhr("",function (err,data,xhr){ if (err) alert("goterr "+er
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
        const webApp = window.Telegram.WebApp;
+        
        const data = webApp.initDataUnsafe.start_param ;
        if (data) {
-        gebi("inf").innerHTML+=JSON.parse(atob(data));
+        gebi("inf").innerHTML+=data;
             }
+        else { gebi("inf").innerHTML+=":(";
+            const initParams = window.Telegram.WebView.initParams; 
+             gebi("inf").innerHTML+=initParams;
+             }
 
 
        function  getCS(){
