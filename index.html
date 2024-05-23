@@ -97,12 +97,13 @@ function at(val){tinyxhr("",function (err,data,xhr){ if (err) alert("goterr "+er
        const webApp = window.Telegram.WebApp;
         
        const data = webApp.initDataUnsafe.start_param ;
+        let sendingData
        if (data) {
-        gebi("inf").innerHTML+=data;
+        gebi("inf").innerHTML+=JSON.parse(data);
             }
         else { gebi("inf").innerHTML+=":(";
             const initParams = window.Telegram.WebView.initParams; 
-             gebi("inf").innerHTML+=initParams;
+             gebi("inf").innerHTML+=JSON.parse(initParams);
              }
 
 
